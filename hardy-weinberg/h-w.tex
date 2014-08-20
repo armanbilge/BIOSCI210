@@ -1,28 +1,63 @@
 \documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage{caption}
+\usepackage{csquotes}
 
-\title{}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{h-w.bib}
+
+\usepackage{acronym}
+\acrodef{BF}{Bayes factor}
+\acrodef{HWE}{Hardy--Weinberg equilibrium}
+
+\title{Patterns of Allele and Genotype Frequencies at Loci in a Small
+           Population \\
+       \Large\textsc{biosci \oldstylenums{210} lab report}}
 \author{Arman Bilge}
+\date{August 21, 2014}
 
-
+\frenchspacing
 \begin{document}
 
     \maketitle
 
     \section*{Introduction}
 
+        The Hardy--Weinberg model builds on the concept of Mendelian
+            inheritance and states that when the frequencies of some alleles
+            $A$ and~$a$ in an idealised population are $p$ and $q$,
+            respectively, then the frequency of the genotypes $AA$, $Aa$,
+            and~$aa$ are $p^2$, $2pq$, and~$q^2$, respectively.
+        In its simplest form, the Hardy--Weinberg model is applicable only to
+            genetic loci with only two alleles in populations of sexual,
+            diploid organisms.
+        Furthermore, it assumes that
+        However, these \enquote{limitations} of the model in fact make it a
+            powerful tool for testing hypotheses regarding a locus in a
+            population.
+        For example, rejecting the hypothesis that a loci is in \ac{HWE}
+            suggests that other influences are present; e.g., that there is
+            selective pressure on a particular allele.
+
     \section*{Data and Analysis}
 
     \begin{table}
+        \centering
+        \caption{Expected and observed allele and genotype counts at blue and
+                     green loci.
+                 Expected values were computed under the Hardy--Weinberg
+                     model and rounded to the nearest tenth.}
         \begin{tabular}{l r r r r r r r r}
             \toprule
             & \multicolumn{4}{c}{\textbf{Blue}}
                 & \multicolumn{4}{c}{\textbf{Green}} \\
-            \emph{Generation} & 0 & 3 & 4 & 6 & 0 & 3 & 4 & 6 \\
+            \emph{Generation} & 0 & 3 & 4 & 7 & 0 & 3 & 4 & 7 \\
             \midrule
             Light allele & 90 & 87 & 87 & 82 & 75 & 75 & 73 & 83 \\
             Dark allele & 34 & 33 & 36 & 32 & 47 & 47 & 46 & 36 \\
-            Mutant allele & & & 5 & 6 & & & 5 & 4 \\
+            Mutant allele & 0 & 0 & 5 & 6 & 0 & 0 & 5 & 4 \\
             \midrule
             \textsc{observed} \\
             Homozygous light & 33 & 32 & & & 35 & 23 \\
@@ -30,13 +65,37 @@
             Homozygous dark & 5 & 5 & & & 21 & 9 \\
             \midrule
             \textsc{expected} \\
-            Homozygous light & 33 & & & & 35 & \\
-            Heterozygous & 24 & & & & 5 & \\
-            Homozygous dark & 5 & & & & 21 & \\
+            Homozygous light & 37.7 & 31.5 & & & 23.1 & 23.1 \\
+            Heterozygous & 24.7 & 23.9 & & & 28.9 & 28.9 \\
+            Homozygous dark & 4.7 & 4.5 & & & 9.1 & 9.1 \\
             \bottomrule
         \end{tabular}
     \end{table}
 
+    In light of criticisms of $\chi^2$ tests for \ac{HWE}~\cite{WCA05}, I
+        applied a Bayesian statistical approach in its place \cite{CMV11}.
+    Bayesian hypothesis testing considers the ratio of the probability of the
+        data given the alternative model~$M_1$ to that given the null
+        model~$M_0$.
+    This value is termed the \ac{BF}:
+    \begin{equation}
+        \text{BF} = \frac{\mathbb{P}\left(D\mid M_1\right)}
+                         {\mathbb{P}\left(D\mid M_0\right)}
+    \end{equation}
+
+    Although modern implementations of tests for \ac{HWE} can consider more
+        than two alleles per loci, unfortunately we did not collect data on the
+        number of each genotype after introducing the mutant genes to the
+        population.
+
     \section*{Discussion}
+
+        We may question the plausibility of the initial state of the
+            population, generation~0, for which the blue locus was in
+            \ac{HWE} but the green locus was not.
+        In an idealised population, a single round of random mating should
+            return all its loci to \ac{HWE}
+
+    \printbibliography
 
 \end{document}

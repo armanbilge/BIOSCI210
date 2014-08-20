@@ -2,12 +2,17 @@ require 'rake/clean'
 
 $base = 'h-w'
 
-CLEAN.include "#$base.aux"
-CLEAN.include "#$base.log"
+['aux', 'log', 'bbl', 'bcf', 'blg', 'run.xml'].each do |ext|
+  CLEAN.include "#$base.#{ext}"
+end
 CLOBBER.add "#$base.pdf"
 
 task :default => "#$base.pdf"
 
 file "#$base.pdf" => "#$base.tex" do |t|
   sh "pdflatex #{t.source}"
+  sh "biber #$base"
+  (1..2).each do
+    sh "pdflatex #{t.source}"
+  end
 end

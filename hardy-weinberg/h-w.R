@@ -3,7 +3,7 @@
 library("HWEintrinsic")
 
 b0 <- c(33, 24, 5)
-b1 <- c(32, 23, 5)
+b1 <- c(32, 24, 5)
 g0 <- c(35, 5, 21)
 g1 <- c(23, 29, 9)
 loci.genotype.counts <- list(b0, b1, g0, g1)

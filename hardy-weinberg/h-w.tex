@@ -2,7 +2,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
-\usepackage{caption}
 \usepackage{csquotes}
 
 \usepackage[backend=biber,style=alphabetic]{biblatex}
@@ -12,8 +11,11 @@
 \acrodef{BF}{Bayes factor}
 \acrodef{HWE}{Hardy--Weinberg equilibrium}
 
-\title{Patterns of Allele and Genotype Frequencies at Loci in a Small
-           Population \\
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+
+\title{Mendelian Inheritance at the Population Level and the Hardy--Weinberg
+           Model \\
        \Large\textsc{biosci \oldstylenums{210} lab report}}
 \author{Arman Bilge}
 \date{August 21, 2014}
@@ -25,76 +27,157 @@
 
     \section*{Introduction}
 
-        The Hardy--Weinberg model builds on the concept of Mendelian
-            inheritance and states that when the frequencies of some alleles
-            $A$ and~$a$ in an idealised population are $p$ and $q$,
+        The characterisation of Mendelian inheritance was an important step
+            forward in evolutionary theory because it provided the
+            foundations of a physical mechanism for creating variation between
+            individuals (that evolutionary processes could then act upon).
+        Gregor Mendel, whose work on garden peas initiated understanding of
+            Mendelian inheritance, proposed three laws describing how traits
+            are passed from parents to offspring; namely, the laws of
+            segregation, independent assortment, and dominance.
+        However, Mendel's laws apply only at the individual level, but
+            evolutionary processes act on populations as a whole, indicating a
+            need for a cohesive theory of inheritance at the level of a
+            population.
+
+        The Hardy--Weinberg model applies the concepts of Mendelian
+            inheritance, specifically the law of segregation, to predict the
+            frequencies of particular genotypes within an idealised population.
+        Specifically, the model states that when the frequencies of some
+            alleles $A$ and~$a$ in the population are $p$ and~$q$,
             respectively, then the frequency of the genotypes $AA$, $Aa$,
             and~$aa$ are $p^2$, $2pq$, and~$q^2$, respectively.
         In its simplest form, the Hardy--Weinberg model is applicable only to
-            genetic loci with only two alleles in populations of sexual,
-            diploid organisms.
-        Furthermore, it assumes that
+            diallelic genetic loci in populations of sexual, diploid organisms.
+        Furthermore, it assumes that there is no migration, mutation, or
+            selection and that the population is infinitely large with
+            non-overlapping generations.
         However, these \enquote{limitations} of the model in fact make it a
-            powerful tool for testing hypotheses regarding a locus in a
-            population.
-        For example, rejecting the hypothesis that a loci is in \ac{HWE}
-            suggests that other influences are present; e.g., that there is
-            selective pressure on a particular allele.
+            powerful tool for statistically testing hypotheses regarding a
+            locus in a population.
+        Rejecting a null hypothesis that a gene is in \ac{HWE} suggests that
+            at least one of the assumptions is invalid and prompts further
+            scientific inquiry.
+
+        To learn about Mendelian inheritance at the population level, we
+            excercised a simple simulation with approximately 60 individuals,
+            each with two loci (plus a third locus for sex determination),
+            over 7 generations.
+        In the initial generation, each locus had only two possible alleles.
+        Random mating was then carried out for three generations.
+        In the fourth generation, a mutant allele was introduced at both loci.
+        While the mutant allele $G1$ at the green locus rendered no advantage,
+            the mutant allele $B1$ at the blue locus gave its carrier a greater
+            chance of survival.
+        Normal alleles within the population were replaced at random by mutant
+            alleles, 5 each for the blue and green loci, followed by another
+            three generations of random mating.
+        I predicted that the $B1$ mutant allele would propagate given the
+            the selective pressure on it, whereas the $G1$ mutant would remain
+            at a relatively constant frequency, subject only to genetic drift.
 
     \section*{Data and Analysis}
+
+    Data were collected of the frequency of each genotype at the blue and green
+        loci when there were only two possible alleles for each; after
+        introducing the mutant alleles, only per-allele frequencies were
+        noted due to the increased number of possible
+        genotypes~(table~\ref{tab:data}).
 
     \begin{table}
         \centering
         \caption{Expected and observed allele and genotype counts at blue and
                      green loci.
-                 Expected values were computed under the Hardy--Weinberg
-                     model and rounded to the nearest tenth.}
+                 Expected values were computed under the non-exact
+                     Hardy--Weinberg model and rounded to the nearest tenth.
+                 The exact Hardy--Weinberg model was considered the null model
+                     when calculating Bayes factors.}
+        \label{tab:data}
         \begin{tabular}{l r r r r r r r r}
             \toprule
             & \multicolumn{4}{c}{\textbf{Blue}}
                 & \multicolumn{4}{c}{\textbf{Green}} \\
             \emph{Generation} & 0 & 3 & 4 & 7 & 0 & 3 & 4 & 7 \\
             \midrule
-            Light allele & 90 & 87 & 87 & 82 & 75 & 75 & 73 & 83 \\
-            Dark allele & 34 & 33 & 36 & 32 & 47 & 47 & 46 & 36 \\
+            Light allele & 90 & 88 & 87 & 82 & 75 & 75 & 73 & 83 \\
+            Dark allele & 34 & 34 & 36 & 32 & 47 & 47 & 46 & 36 \\
             Mutant allele & 0 & 0 & 5 & 6 & 0 & 0 & 5 & 4 \\
             \midrule
             \textsc{observed} \\
             Homozygous light & 33 & 32 & & & 35 & 23 \\
-            Heterozygous & 24 & 23 & & & 5 & 29 \\
+            Heterozygous & 24 & 24 & & & 5 & 29 \\
             Homozygous dark & 5 & 5 & & & 21 & 9 \\
             \midrule
             \textsc{expected} \\
-            Homozygous light & 37.7 & 31.5 & & & 23.1 & 23.1 \\
-            Heterozygous & 24.7 & 23.9 & & & 28.9 & 28.9 \\
-            Homozygous dark & 4.7 & 4.5 & & & 9.1 & 9.1 \\
+            Homozygous light & 32.7 & 31.7 & & & 23.1 & 23.1 \\
+            Heterozygous & 24.7 & 24.5 & & & 28.9 & 28.9 \\
+            Homozygous dark & 4.7 & 4.7 & & & 9.1 & 9.1 \\
+            \midrule
+            Bayes factor & 0.261 & 0.261 & & & $3.78 \times 10^9$ & 0.295 \\
             \bottomrule
         \end{tabular}
     \end{table}
 
-    In light of criticisms of $\chi^2$ tests for \ac{HWE}~\cite{WCA05}, I
-        applied a Bayesian statistical approach in its place \cite{CMV11}.
+    In light of criticisms of $\chi^2$ tests for \ac{HWE}~\cite{WCA05},
+        I employed an exact Bayesian statistical approach~\cite{CMV11} in its
+        place (where \enquote{exact} indicates a relaxation of the infinite
+        population assumption).
     Bayesian hypothesis testing considers the ratio of the probability of the
         data given the alternative model~$M_1$ to that given the null
-        model~$M_0$.
-    This value is termed the \ac{BF}:
+        model~$M_0$ (in this case, \ac{HWE})~\cite{Wak10}.
+    This value is termed the \ac{BF} and formally defined as
     \begin{equation}
         \text{BF} = \frac{\mathbb{P}\left(D\mid M_1\right)}
-                         {\mathbb{P}\left(D\mid M_0\right)}
+                         {\mathbb{P}\left(D\mid M_0\right)}.
     \end{equation}
+    Note that a \ac{BF} substantially larger than 1 provides strong evidence
+        to reject the null model in favour of the alternative.
+    I computed \ac{BF}s using the \texttt{R}~\cite{RCT14} package
+        \texttt{HWEintrinsic}~\cite{Ven12}, which considers the full (or
+        saturated) model as the alternative~\cite{CMV11}
+        (table~\ref{tab:data}).
+
+    For generation~0, the failure to reject the null model at the blue locus
+        suggests that it is in \ac{HWE}. However, the null model was decisively
+        rejected at the green locus, indicative that it is not in \ac{HWE}.
+    Three generations later, the statistical tests failed to reject the null
+        model at both the blue and green loci, suggesting that both are in
+        \ac{HWE}.
+    At both loci, the allele frequencies remained constant as did the genotype
+        frequencies at the blue locus (although it appears that a homozygous
+        light individual went missing).
+    However, at the green locus, the genotype frequencies changed dramatically,
+        correlating with the statistical evidence that between the generations
+        the population went from non-\ac{HWE} to \ac{HWE}.
 
     Although modern implementations of tests for \ac{HWE} can consider more
-        than two alleles per loci, unfortunately we did not collect data on the
-        number of each genotype after introducing the mutant genes to the
-        population.
+        than two alleles per loci~\cite{Wak10}, unfortunately we did not
+        collect the data necessary to enable these calculations.
 
     \section*{Discussion}
+
+
 
         We may question the plausibility of the initial state of the
             population, generation~0, for which the blue locus was in
             \ac{HWE} but the green locus was not.
         In an idealised population, a single round of random mating should
             return all its loci to \ac{HWE}
+
+        I am unsurprised that changes in the frequency of the $B1$ mutant
+            allele after three generations were minimal despite the apparent
+            selective pressure on it.
+        It is important to note that individuals carrying the $B1$ allele had
+            an advantage only over their siblings; that is, under the rules of
+            our simulation, two parents must always replace themselves with two
+            children, irregardless of whether either carried the advantageous
+            $B1$ allele.
+        Therefore, an individual carrying $B1$ had no greater reproductive
+            success than a non-sibling that does not carry $B1$.
+        I expect that in a simulation where an individual carrying an allele
+            with an advantageous mutation has a clear advantage over all
+            individuals then the effect of selection on alleles would be
+            demonstrated more strongly.
 
     \printbibliography
 

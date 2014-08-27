@@ -9,7 +9,9 @@ CLOBBER.add "#$base.pdf"
 
 task :default => "#$base.pdf"
 
-file "#$base.pdf" => ["#$base.tex", "#$base.bib"] do |t|
+file "#$base.pdf" => ["#$base.tex",
+                      "#$base.bib",
+                      "character-matrix.tex"] do |t|
   pdf = 'pdflatex'
   bib = 'biber'
   [pdf, bib, pdf, pdf].each do |command|

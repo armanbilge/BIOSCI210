@@ -1,0 +1,222 @@
+#NEXUS
+[written Thu Aug 28 16:14:04 NZST 2014 by Mesquite  version 2.75 (build 566) at cs288775/130.216.37.34]
+
+BEGIN TAXA;
+	TITLE Taxa;
+	DIMENSIONS NTAX=29;
+	TAXLABELS
+		1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 
+	;
+
+END;
+
+
+BEGIN CHARACTERS;
+	TITLE  Character_Matrix;
+	DIMENSIONS  NCHAR=37;
+	FORMAT DATATYPE = STANDARD GAP = - MISSING = ? SYMBOLS = "  0 1";
+	CHARSTATELABELS 
+		1 Has_eyes, 2 Has_appendages, 3 Has_distinct_head, 4 Has_stubs, 5 Has_tentacles, 6 'Has arms/hands', 7 'Has distinct abdomen/thorax', 8 Has_wings, 9 'Has single/fused eye', 10 Arms_are_jointed, 11 Has_one_rear_appendage, 12 Has_two_rear_appendages, 13 Has_feet, 14 Hands_have_nails, 15 Eye_antennae_are_on_opposite_sides, 16 Tail_fused_to_body, 17 'Has tail-fin', 18 Tentacles_have_sparse_spots, 19 Tentacles_have_dense_spots, 20 'Has U-shape spot pattern', 21 Head_splits_into_protruding_elements, 22 'Has bean-shaped body', 23 Has_row_spot_pattern, 24 'Tentacles 2x long as head/neck', 25 'Has patchs/spots/dots', 26 'Has 4-2-2 spot pattern', 27 'Eye-less head has blunt front', 28 'Tentacles are dark-coloured', 29 Wings_are_rounded, 30 'Dark two-spots', 31 Large_round_body, 32 Small_round_body, 33 Short_stubs, 34 Long_stubs, 35 Shaded_M_easily_apparent, 36 Small_round_wing ; 
+	MATRIX
+	1   1110100000100000100001010001000000001
+	2   1110010001011000000001001000000000001
+	3   1110010000010100000001001000000000001
+	4   1100000100000001000000000000100000010
+	5   1110100000100000110001010000000000101
+	6   1110010001010000000001001100000000001
+	7   1110100000100000101001010001000000101
+	8   1100101000100000000000001000001000001
+	9   1100101010100000000000111000010100001
+	10  1110010001011100000001001000000000001
+	11  1110000100100010000000000000100000000
+	12  1110100000100000110001000000000000101
+	13  1110010000010100000001001000000000001
+	14  1110100000100000101001010001000000001
+	15  1110010001011100000001001000000000001
+	16  1110010000100000000001001100000000001
+	17  1100101000100000000100001000011000001
+	18  1110000100000011000000000000000000000
+	19  1100101010100000000100001000011000001
+	20  1100101000100000000000111000000100001
+	21  1110000100000011000000000000100000010
+	22  1110010000100000000001001100000000001
+	23  0101000000100000000001000000000001101
+	24  0000000000100000000011000000000000001
+	25  0101000000100000000011000000000010001
+	26  0101000000100000000001000010000010001
+	27  0101000000100001000001000010000001101
+	28  0101000000100001000001000010000001101
+	29  0000000000100000000001000000000000101
+
+;
+
+END;
+BEGIN ASSUMPTIONS;
+	TYPESET * UNTITLED   =  unord:  1 -  37;
+
+END;
+
+BEGIN MESQUITECHARMODELS;
+	ProbModelSet * UNTITLED   =  'Mk1 (est.)':  1 -  37;
+END;
+
+Begin MESQUITE;
+		MESQUITESCRIPTVERSION 2;
+		TITLE AUTO;
+		tell ProjectCoordinator;
+		timeSaved 1409199244817;
+		getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			setID 0 2961964915717276227;
+		endTell;
+		getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters;
+		tell It;
+			setID 0 452174360896164755;
+			mqVersion 275;
+			checksumv 0 3 3948279377 null  getNumChars 37 numChars 37 getNumTaxa 29 numTaxa 29   short true   bits 3   states 3   sumSquaresStatesOnly 1844.0 sumSquares 1844.0 longCompressibleToShort false usingShortMatrix true   NumFiles 1 NumMatrices 1;
+			mqVersion;
+		endTell;
+		getWindow;
+		tell It;
+			suppress;
+			setResourcesState false false 100;
+			setPopoutState 400;
+			setExplanationSize 0;
+			setAnnotationSize 0;
+			setFontIncAnnot 0;
+			setFontIncExp 0;
+			setSize 1287 898;
+			setLocation 734 22;
+			setFont SanSerif;
+			setFontSize 10;
+			getToolPalette;
+			tell It;
+			endTell;
+			desuppress;
+		endTell;
+		getEmployee  #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			showTaxa #2961964915717276227 #mesquite.lists.TaxonList.TaxonList;
+			tell It;
+				setTaxa #2961964915717276227;
+				getWindow;
+				tell It;
+					newAssistant  #mesquite.lists.DefaultTaxaOrder.DefaultTaxaOrder;
+					newAssistant  #mesquite.lists.TaxonListCurrPartition.TaxonListCurrPartition;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1187 831;
+					setLocation 734 22;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+					endTell;
+				endTell;
+				showWindow;
+				getEmployee #mesquite.lists.ColorTaxon.ColorTaxon;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.lists.TaxonListAnnotPanel.TaxonListAnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+			endTell;
+		endTell;
+		getEmployee  #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord;
+		tell It;
+			showDataWindow #452174360896164755 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker;
+			tell It;
+				getWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1187 831;
+					setLocation 734 22;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam;
+					endTell;
+					setActive;
+					setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam;
+					colorCells  #mesquite.charMatrices.NoColor.NoColor;
+					colorRowNames  #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor;
+					colorColumnNames  #mesquite.charMatrices.CharGroupColor.CharGroupColor;
+					colorText  #mesquite.charMatrices.NoColor.NoColor;
+					setBackground White;
+					toggleShowNames on;
+					toggleShowTaxonNames on;
+					toggleTight off;
+					toggleThinRows off;
+					toggleShowChanges on;
+					toggleSeparateLines off;
+					toggleShowStates on;
+					toggleAutoWCharNames on;
+					toggleAutoTaxonNames off;
+					toggleShowDefaultCharNames off;
+					toggleConstrainCW on;
+					toggleBirdsEye off;
+					toggleShowPaleGrid off;
+					toggleShowPaleCellColors off;
+					togglePaleInapplicable on;
+					toggleShowBoldCellText off;
+					toggleAllowAutosize on;
+					toggleColorsPanel off;
+					toggleDiagonal on;
+					setDiagonalHeight 80;
+					toggleLinkedScrolling on;
+					toggleScrollLinkedTables off;
+				endTell;
+				showWindow;
+				getWindow;
+				tell It;
+					forceAutosize;
+				endTell;
+				getEmployee #mesquite.charMatrices.ColorByState.ColorByState;
+				tell It;
+					setStateLimit 9;
+					toggleUniformMaximum on;
+				endTell;
+				getEmployee #mesquite.charMatrices.ColorCells.ColorCells;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+				getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector;
+				tell It;
+					autotabOff;
+				endTell;
+				getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor;
+				tell It;
+					panelOpen true;
+				endTell;
+			endTell;
+		endTell;
+		endTell;
+end;
+
+

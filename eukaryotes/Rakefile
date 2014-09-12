@@ -1,0 +1,19 @@
+require 'rake/clean'
+
+$base = 'eukaryotes'
+
+['aux', 'log', 'bbl', 'bcf', 'blg', 'run.xml'].each do |ext|
+  CLEAN.include "#$base.#{ext}"
+end
+CLOBBER.add "#$base.pdf"
+
+task :default => "#$base.pdf"
+
+file "#$base.pdf" => ["#$base.tex",
+                      "#$base.bib"] do |t|
+  pdf = 'pdflatex'
+  bib = 'biber'
+  [pdf, bib, pdf, pdf].each do |command|
+    sh "#{command} #$base"
+  end
+end

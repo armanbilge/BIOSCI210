@@ -16,4 +16,7 @@ file "#$base.pdf" => ["#$base.tex",
   [pdf, bib, pdf, pdf].each do |command|
     sh "#{command} #$base"
   end
+
+  sh "texcount #$base.tex"
+
 end
